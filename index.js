@@ -56,7 +56,6 @@ app.use('/', (req, res, next) => {
     })
 })
 
-// Start the HTTP server on port 3005
-app.listen(3005);   // It will run on port 3005
-
-
+// Start the HTTP server
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Website is running!"));
