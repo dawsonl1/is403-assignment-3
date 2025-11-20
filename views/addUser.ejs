@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs') %>
+  <!-- Use the same main stylesheet -->
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <%- include('includes/header.ejs') %>
+
+  <div class="main-content add-user-page">
+    <!-- Page heading -->
+    <h1>Add New User</h1>
+
+    <p class="add-user-error"><%= error %></p>
+
+    <!-- Form to add a new user -->
+    <form action="/addUser" method="POST" class="add-user-form">
+      <input 
+        type="text" 
+        name="username" 
+        placeholder="Enter username" 
+        required 
+      />
+      <input 
+        type="password" 
+        name="password" 
+        placeholder="Enter password" 
+        required 
+      />
+      <div class="add-user-role">
+        <label>
+          <input type="radio" name="user_level" value="U" checked>
+          User
+        </label>
+        <label>
+          <input type="radio" name="user_level" value="M">
+          Manager
+        </label>
+      </div>
+      <button type="submit">Save</button>
+      <a href="/" class="add-user-back-link" style="text-decoration: none;">Back</a>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+    "watch": ["index.js", "routes/*.js", "controller/*.js", "model/*.js"],
+    "ignore": [".env"]
+}

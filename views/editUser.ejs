@@ -1,0 +1,54 @@
+<%- include('includes/head.ejs') %>
+  <!-- Use the same main stylesheet -->
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <%- include('includes/header.ejs') %>
+
+  <div class="main-content add-user-page">
+    <!-- Page heading -->
+    <h1>Edit User</h1>
+
+    <p class="add-user-error"><%= error %></p>
+
+    <!-- Form to edit an existing user -->
+    <form action="/editUser/<%= user.userid %>" method="POST" class="add-user-form">
+      <input 
+        type="text" 
+        name="username" 
+        value="<%= user.username %>"
+        placeholder="Enter username" 
+        required 
+      />
+      <input 
+        type="password" 
+        name="password" 
+        value="<%= user.password %>"
+        placeholder="Enter password" 
+        required 
+      />
+      <div class="add-user-role">
+        <label>
+          <input 
+            type="radio" 
+            name="user_level" 
+            value="U" 
+            <%= user.user_level === 'U' ? 'checked' : '' %>>
+          User
+        </label>
+        <label>
+          <input 
+            type="radio" 
+            name="user_level" 
+            value="M"
+            <%= user.user_level === 'M' ? 'checked' : '' %>>
+          Manager
+        </label>
+      </div>
+      <button type="submit">Save</button>
+      <a href="/" class="add-user-back-link">Back</a>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<%- include('includes/head.ejs') %>
+  <!-- Link to the main stylesheet for the application -->
+  <link rel="stylesheet" href="/styles.css" />
+  </head>
+<body>
+  <%- include('includes/header.ejs') %>
+
+  <!-- Page title / heading -->
+  <h1>Users</h1>
+
+  <!-- Optional error message -->
+  <% if (error) { %>
+    <p style="color:red; text-align:center;"><%= error %></p>
+  <% } %>
+
+  <!-- Container that lists all users currently in the database -->
+  <div class="list">
+    <h2>All Users</h2>
+      <div>
+        <% if (!users || users.length === 0) { %>
+          <p>No users found.</p>
+        <% } else { %>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>User Level</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead> 
+            <tbody>
+              <% for (let i = 0; i < users.length; i++) { %>
+                  <tr>
+                    <td><%= users[i].userid %></td>
+                    <td><%= users[i].username %></td>
+                    <td><%= users[i].user_level %></td>
+
+                    <td>
+                      <form action="/editUser/<%= users[i].userid %>" method="get">
+                        <input type="submit" value="Edit" class="table-action-button">
+                      </form>
+                    </td>
+
+                    <td>
+                      <form action="/deleteUser/<%= users[i].userid %>" method="post" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <input type="submit" value="Delete" class="table-action-button table-action-button--danger user-action-button">
+                      </form>
+                    </td>
+                  </tr>
+                <% } %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+  </div>
+</body>
+</html>

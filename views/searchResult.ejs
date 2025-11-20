@@ -1,0 +1,31 @@
+<%- include('includes/head.ejs') %>
+  <!-- Reuse the main stylesheet -->
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('includes/header.ejs') %>
+  <div class="main-content">
+    <!-- Page heading -->
+    <h1>Search Result</h1>
+
+    <% if (pokemon) { %>
+      <!-- When a Pokémon is found, show its artwork and base stats -->
+      <div class="result-box">
+        <img 
+          src="https://img.pokemondb.net/artwork/large/<%= pokemon.description.toLowerCase() %>.jpg" 
+          alt="<%= pokemon.description %> image" 
+          class="pokemon-image"
+        />
+        <h2><%= pokemon.description %></h2>
+        <p>Base Total: <strong><%= pokemon.base_total %></strong></p>
+      </div>
+    <% } else { %>
+      <!-- Fallback message if no Pokémon matched the search -->
+      <p style="text-align:center;">No Pokémon found with that name.</p>
+    <% } %>
+
+    <!-- Link back to the Pokémon main page -->
+    <a href="/pokemon" class="add-user-back-link" style="text-decoration: none;">Back to Home</a>
+  </div>
+</body>
+</html>

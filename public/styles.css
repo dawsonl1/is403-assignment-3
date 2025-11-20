@@ -1,0 +1,427 @@
+/* Main stylesheet for the Pokémon MVC application */
+
+/* ---------- Global Reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f5f7fb; /* slightly brighter, clean background */
+  color: #111827;
+  font-size: 17px; /* base text a bit larger */
+  line-height: 1.6;
+}
+
+.main-content {
+  width: 92%;
+  max-width: 1100px;
+  margin: 2rem auto 3rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 1.1rem;
+  color: #102a43;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Header / Navigation ---------- */
+header {
+  background-color: #1d4ed8; /* bright, modern blue */
+  padding: 0.9rem 0;
+  box-shadow: 0 4px 16px rgba(15, 35, 80, 0.35);
+}
+
+header .container {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+header h1 {
+  color: #f9fafb;
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Make logout form blend with links */
+header nav form {
+  all: unset;
+}
+
+header nav a,
+header nav button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.95rem;
+  color: #e5edff;
+  border-radius: 999px;
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  background-color: #2563eb;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.08s ease;
+}
+
+header nav a:hover,
+header nav a:focus,
+header nav button:hover,
+header nav button:focus {
+  background-color: #1e40af;
+  color: #eff6ff;
+  box-shadow: 0 3px 10px rgba(4, 18, 50, 0.35);
+  transform: translateY(-1px);
+}
+
+.nav-logout {
+  font-weight: 600;
+}
+
+/* ---------- Generic Form Styling ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  margin: 1.75rem auto 0;
+  padding: 1.6rem 1.8rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(15, 35, 80, 0.18);
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+textarea {
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #c5d3ea;
+  font-size: 0.95rem;
+  background-color: #f9fbff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2f6bff;
+  box-shadow: 0 0 0 2px rgba(47, 107, 255, 0.2);
+  background-color: #ffffff;
+}
+
+/* Primary button (forms) */
+button[type='submit'],
+.pokemon-search-btn {
+  padding: 0.7rem 1.25rem;
+  margin-top: 0.3rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #2563eb; /* bright primary blue */
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background-color 0.15s ease;
+}
+
+button[type='submit']:hover,
+.pokemon-search-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(30, 64, 175, 0.35);
+}
+
+button[type='submit']:active,
+.pokemon-search-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(12, 45, 120, 0.25);
+}
+
+/* ---------- Login Page ---------- */
+body > h1:first-of-type {
+  margin-top: 2.5rem;
+}
+
+body > form[action='/login'] {
+  margin-top: 1rem;
+}
+
+/* Inline error under headings when used */
+.add-user-error,
+body > p[style*='color: red'] {
+  text-align: center;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+  color: #d64545;
+}
+
+/* ---------- Description Text (Pokémon page) ---------- */
+.description {
+  text-align: center;
+  max-width: 600px;
+  margin: 0.7rem auto 0;
+  font-size: 1.02rem;
+  color: #4b5876;
+}
+
+/* ---------- Users & Pokémon List Card ---------- */
+.list {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  padding: 1.6rem 1.8rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(15, 35, 80, 0.12);
+}
+
+.list h2 {
+  margin-bottom: 0.9rem;
+  text-align: left;
+}
+
+/* ---------- Table Styling ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.9rem;
+  font-size: 1.05rem; /* larger text for readability */
+}
+
+th,
+td {
+  padding: 0.95rem 0.85rem; /* extra breathing room */
+  text-align: left;
+  border-bottom: 1px solid #e2e8f4;
+  line-height: 1.5;
+}
+
+th {
+  background-color: #eff6ff; /* light, bright header */
+  color: #1e3a8a;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f4ff; /* slightly higher contrast stripe */
+}
+
+tr:hover {
+  background-color: #e8f0ff;
+  transition: background-color 0.16s ease;
+}
+
+/* Pokémon table rows clickable */
+.pokemon-table tr {
+  cursor: pointer;
+}
+
+/* ---------- Small Action Buttons in Tables ---------- */
+/* Ensure table forms are inline, not large cards */
+td form {
+  all: unset;
+}
+
+td form input[type='submit'] {
+  padding: 0.26rem 0.7rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #1a66ff;
+  color: #ffffff;
+  font-size: 0.78rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(13, 40, 95, 0.2);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
+}
+
+.table-action-button--danger {
+  background-color: #e14b4b !important;
+}
+
+.table-action-button--danger:hover {
+  background-color: #c43838 !important;
+}
+
+.table-action-button:hover {
+  background-color: #144fd0;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(12, 38, 90, 0.3);
+}
+
+/* ---------- Add / Edit User Pages ---------- */
+.add-user-page {
+  max-width: 520px;
+  margin: 2.2rem auto 3rem;
+}
+
+.add-user-page h1 {
+  margin-bottom: 0.4rem;
+}
+
+.add-user-form {
+  margin-top: 0.4rem;
+}
+
+.add-user-form input,
+.add-user-form select {
+  width: 100%;
+}
+
+.add-user-role {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.add-user-role label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.add-user-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #c5d3ea;
+  background-color: #f7f9ff;
+  color: #2f4f90;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-user-back-link:hover {
+  background-color: #e5edff;
+  color: #1b3368;
+  box-shadow: 0 2px 8px rgba(15, 35, 80, 0.18);
+}
+
+/* Keep Add/Edit User back buttons left-aligned inside their forms */
+.add-user-page .add-user-back-link {
+  margin-left: 0;
+}
+
+/* ---------- Pokémon Search Result Card ---------- */
+.result-box {
+  max-width: 420px;
+  margin: 1.8rem auto 0;
+  padding: 1.7rem 1.8rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 28px rgba(10, 30, 80, 0.26);
+  text-align: center;
+}
+
+.pokemon-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.result-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.result-box p {
+  font-size: 1.05rem;
+  color: #4b5876;
+}
+
+.main-content a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  color: #1a66ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-content a:hover {
+  text-decoration: underline;
+}
+
+/* Center the Back to Home pill on the search result page */
+.main-content .add-user-back-link {
+  display: block;
+  margin: 1.5rem auto 0;
+  width: fit-content;
+}
+
+/* ---------- 404 Page ---------- */
+.error-page {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.error-page h1 {
+  color: #d64545;
+  margin-bottom: 0.6rem;
+}
+
+.error-page a {
+  display: inline-flex;
+  margin-top: 0.8rem;
+  color: #1a66ff;
+  text-decoration: none;
+}
+
+.error-page a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 720px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .list,
+  .add-user-page,
+  .main-content {
+    width: 94%;
+  }
+}

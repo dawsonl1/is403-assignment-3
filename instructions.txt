@@ -1,0 +1,37 @@
+Using the results from assignment 3, make sure that the following are included:
+
+- Create a user table with a username and login and level
+    - level is a character varying for length of 1
+        - holds M or U
+        - M - Manager
+        - U - User
+- Create view to add a user
+    - Input for user name and password
+    - Radio button group for Manager or User
+    - Save button
+        - when record is saved, return to landing page
+    - Back button
+- Modify landing page
+    - Only show Add button if user is Manager
+    - Add Delete button for each user in the table in the grid
+        - If delete is clicked, display pop up message confirming
+        - If yes, delete
+        - If no, don't delete
+        - Both return to the landing page
+    - Add Edit button for each user in the table in the grid
+        - When clicked, pass the user id to new Edit view
+- Modify Add view
+    - Only display if logged in
+    - Don't worry about checking for Manager
+- Create Edit view
+    - Route receives user id
+    - Finds user and displays in edit view
+    - Allows changes
+    - Button to save changes
+        - Then returns to landing page
+    - Button to go back to landing without saving
+- There needs to be a login page so you know the type of user (manager or user)
+
+NOTE: (this should be a culmination of all the group work you have done but I want you to do it now individually)
+
+Make it look professional. This should be a full-stack website with database and security to display, add, edit, and delete data.

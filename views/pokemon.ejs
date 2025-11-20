@@ -1,0 +1,77 @@
+<%- include('includes/head.ejs') %>
+  <!-- Link to the main stylesheet for the application -->
+  <link rel="stylesheet" href="/styles.css" />
+  </head>
+<body>
+  <%- include('includes/header.ejs') %>
+
+  <!-- Page title / heading -->
+  <h1>Pokémon Database</h1>
+
+  <!-- Short description explaining how to use the page -->
+  <p class="description">
+    Search or click a Pokémon to see its photo and stats.
+  </p>
+
+  <!-- Search form that posts the entered Pokémon name to /pokemon/searchPokemon -->
+  <form action="/pokemon/searchPokemon" method="POST">
+    <input 
+      type="text" 
+      name="pokemonName" 
+      placeholder="Enter Pokémon name (e.g., Charizard)" 
+      required 
+    />
+    <button type="submit" class="pokemon-search-btn">Search Pokémon</button>
+  </form>
+
+  <!-- Container that lists all Pokémon currently in the database -->
+  <div class="list">
+    <h2>All Pokémon</h2>
+      <div>
+        <% if (!pokemonList || pokemonList.length === 0) { %>
+          <!-- Message shown when there are no Pokémon to display -->
+          <p>No Pokémon found.</p>
+        <% } else { %>
+          <table class="pokemon-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th> 
+                <th>Base Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% pokemonList.forEach(pokemon => { %>
+                <!-- Each row represents a single Pokémon. Clicking the row triggers a search for that Pokémon. -->
+                <tr onclick="searchPokemon('<%= pokemon.description %>')">
+                  <td><%= pokemon.pokemonid %></td>
+                  <td><%= pokemon.description %></td> 
+                  <td><%= pokemon.base_total %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+  </div>
+
+  <script>
+    // Helper function that creates and submits a hidden POST form to search for a Pokémon
+    async function searchPokemon(name) {
+      // Create a form dynamically to simulate the POST
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/pokemon/searchPokemon';
+
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'pokemonName';
+      input.value = name;
+
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+    }
+  </script>
+</body>
+</html>
