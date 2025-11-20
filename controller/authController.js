@@ -31,7 +31,7 @@ exports.postLogIn = async (req, res) => {
 
         // 5. Redirect to the home page
         res.redirect('/');
-    } catch {
+    } catch (err) {
         console.error(err);
         return res.status(500).render('login.ejs', { 
             error: 'Server error', 
